@@ -9,7 +9,15 @@ def scrape_amazon(asin):
     with sync_playwright() as p:
 
         browser = p.chromium.launch(
-            headless=False
+
+            headless=True,
+
+            args=[
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage"
+            ]
+
         )
 
         page = browser.new_page()
@@ -133,5 +141,3 @@ def scrape_amazon(asin):
             "images": images
 
         }
-
-
