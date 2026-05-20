@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from scraper import scrape_amazon
 
 app = Flask(__name__)
 
+# ENABLE CORS
+CORS(app)
+
 
 @app.route("/scrape", methods=["POST"])
-
 def scrape_product():
 
     data = request.json
@@ -25,7 +28,6 @@ def scrape_product():
 
 
 @app.route("/")
-
 def home():
 
     return "Amazon Scraper API Running"
