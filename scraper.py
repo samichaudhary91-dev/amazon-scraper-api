@@ -12,6 +12,8 @@ def scrape_amazon(asin):
 
             headless=True,
 
+            channel="chromium",
+
             args=[
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
@@ -94,7 +96,7 @@ def scrape_amazon(asin):
 
                 if src:
 
-                    # CONVERT TO HIGH QUALITY
+                    # HIGH QUALITY IMAGES
 
                     if "._AC_US40_" in src:
 
@@ -117,7 +119,7 @@ def scrape_amazon(asin):
                             "SL1500"
                         )
 
-                    # REMOVE DUPLICATE IMAGES
+                    # REMOVE DUPLICATES
 
                     if src not in seen_images:
 
